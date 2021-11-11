@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_firebase/controller/google_auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,18 +17,18 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/cover.png"),
+                    image: AssetImage("assets/images/login.png"),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                top: 12.0,
-                bottom: 12.0,
+              padding: const EdgeInsets.symmetric(
+                vertical: 12.0,
+                horizontal: 10.0,
               ),
               child: Text(
-                "Create and manage you notes",
+                "Create and manage your notes",
                 style: TextStyle(
                   fontSize: 36.0,
                   fontFamily: "lato",
@@ -35,13 +36,47 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Row(
-                children: [
-                  Text("Continue with google"),
-                ],
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
               ),
+              child: ElevatedButton(
+                onPressed: () {
+                  signInWithGoogle(context);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Continue with google",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: "lato",
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Image.asset(
+                      'assets/images/google.png',
+                      height: 36.0,
+                    ),
+                  ],
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.grey[700],
+                  ),
+                  padding: MaterialStateProperty.all(
+                    EdgeInsets.symmetric(
+                      vertical: 12.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
             ),
           ],
         ),
